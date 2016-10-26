@@ -10,7 +10,7 @@ module.exports = class Gravestones extends UsableObject{
     this.stones.push(gravestone)
     this.setUsage('Mourn the fallen' );
     this.setDescription('');
-    this.setName('Gravestone');
+    this.data.name = 'Gravestone';
 
   }
 
@@ -26,11 +26,11 @@ module.exports = class Gravestones extends UsableObject{
     this.stones.push(gravestone);
     console.log('added gravestone');
     if(this.stones.length > 1){
-      this.setName('Gravestones');
+          this.data.name = 'Gravestones';
       this.setDescription('a few gravestones');
     }
     else if(this.stones.length > 6){
-      this.setName('Cemetery');
+          this.data.name = 'Cemetery';
       this.setDescription('a cemetery');
     }
   }

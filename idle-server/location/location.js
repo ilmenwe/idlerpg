@@ -23,6 +23,7 @@ module.exports = class Location extends Persistable
   getObjects(){
     return this.objects;
   }
+
   load(id){
     this.initData();
     console.log(id);
@@ -34,6 +35,7 @@ module.exports = class Location extends Persistable
       this.Enter(character);
     }
   }
+
   save(){
     this.data.characterId = [];
     for(let i in this.characters)
@@ -45,7 +47,6 @@ module.exports = class Location extends Persistable
     return super.save();
   }
 
-
   removeObject(object){
     if(object.getName() == 'Gravestone'){
         if(this.gravestones == null){
@@ -53,8 +54,6 @@ module.exports = class Location extends Persistable
           return;
         }
       }
-    var index = this.objects.indexOf(object);
-    this.objects = this.objects.spline(index,1);
 
   }
 
@@ -77,9 +76,6 @@ module.exports = class Location extends Persistable
 
   Description(){
     return this.data.description;
-  }
-  Name(){
-    return this.data.name;
   }
   Enter(character){
     console.log(character.getName() + ' has entered ' + this.getName());

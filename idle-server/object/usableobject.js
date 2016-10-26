@@ -1,10 +1,11 @@
+const Persistable = require('../store/persistable');
 
-
-module.exports = class UsableObject{
+module.exports = class UsableObject extends Persistable{
   constructor(destinationLocation){
-     this.name = "got no name";
-     this.usage = "the use is not defined";
-     this.description = "the object got no description";
+     super();
+     this.data.name = "got no name";
+     this.data.usage = "the use is not defined";
+     this.data.description = "the object got no description";
   }
 
   Description(){
@@ -15,13 +16,6 @@ module.exports = class UsableObject{
     return this.usage;
   }
 
-  Name(){
-    return this.name;
-  }
-
-  setName(name){
-    this.name = name;
-  }
 
   setDescription(description){
     this.description = description;
@@ -32,7 +26,7 @@ module.exports = class UsableObject{
   }
 
   Use(character){
-    console.log(character.Name() + ' tried to use ' + this.Name() + ' to ' + this.Usage());
+    console.log(character.Name() + ' tried to use ' + this.getName() + ' to ' + this.Usage());
     return true;
   }
 

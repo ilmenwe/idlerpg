@@ -12,7 +12,6 @@ module.exports = class Character extends Persistable {
     this.data.location = null;
     this.data.lifeLength = 0;
     this.stats.set('energy',3);
-
   }
 
   save(){
@@ -46,24 +45,23 @@ module.exports = class Character extends Persistable {
   }
 
   Output(){
-    console.log('Updating '+ this.Name() + JSON.stringify(this.stats.getStats()));
+    console.log('Updating '+ this.getName() + JSON.stringify(this.stats.getStats()));
     let hunger = this.isHungry();
     console.log('Hunger: ' + hunger);
 
-    console.log(this.Name() + ' is ' + this.getState());
+    console.log(this.getName() + ' is ' + this.getState());
 
     if(this.getState() == 'alive'){
-    console.log(this.location);
       if(this.location != null)
       {
-        console.log('   '+ this.Name() + ' is in ' + this.location.Name());
+        console.log('   '+ this.getName() + ' is in ' + this.location.getName());
       }
       let locationObjs = this.location.getObjects();
       if(locationObjs != null)
       {
         for(let i = 0; i < locationObjs.length; i++){
           let currentObj = locationObjs[i];
-          console.log('      ' + this.Name() + ' see ' + currentObj.Name() + '. ' + currentObj.Description());
+          console.log('      ' + this.getName() + ' see ' + currentObj.getName() + '. ' + currentObj.Description());
         }
       }
     }
@@ -80,12 +78,12 @@ module.exports = class Character extends Persistable {
         console.info("No Objects to interact with in: " + this.location.getName());
       }
       if(this.stats.get('energy') <= 0) {
-        console.log( this.Name() + ' ran out of energy and died of hunger');
+        console.log( this.getName() + ' ran out of energy and died of hunger');
         this.data.state = 'dead';
         let gravestone = new GraveStone(this);
         this.location.addObject(gravestone);
         let character = new Character();
-        console.log('\n' + character.Name() + ' assembles from the ashes');
+        console.log('\n' + character.getName() + ' assembles from the ashes');
         this.location.Enter(character)
       }
       this.data.lifeLength++;

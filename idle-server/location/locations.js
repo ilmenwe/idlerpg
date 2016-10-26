@@ -44,10 +44,8 @@ module.exports = class Locations {
   load()
   {
     let world = WorldStore.get();
-    console.log(world);
     for(let i in world.locations ){
       let locationID = world.locations[i];
-      console.log(locationID);
       this.locations.push(new Location(locationID));
     }
   }

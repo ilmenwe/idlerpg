@@ -1,5 +1,6 @@
-const UsableObject = require('../usableobject')
-const Random = require('../../random/random')
+const UsableObject = require('../usableobject');
+const Random = require('../../random/random');
+
 
 
 module.exports = class Gravestone extends UsableObject{
@@ -7,10 +8,10 @@ module.exports = class Gravestone extends UsableObject{
     super();
 
     this.setUsage('Mourn the fallen' );
-    this.setDescription('It\'s a grave stone to ' + character.Name()+ ' who lived for ' + character.lifeLength + ' updates');
-    this.setName('Gravestone');
+    this.setDescription('It\'s a grave stone to ' + character.getName()+ ' who lived for ' + character.lifeLength + ' updates');
+    this.data.name = 'Gravestone';
     this.location = character.getLocation();
-    this.occupantName = character.Name();
+    this.occupantName = character.getName();
 
   }
 
