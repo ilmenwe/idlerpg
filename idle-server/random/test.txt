@@ -1,0 +1,19 @@
+var randomInstance = null;
+
+class Random {
+
+  constructor(){
+    if(randomInstance == null){
+      randomInstance = this;
+    }
+    return randomInstance;
+  }
+
+getOneOf(list){
+  let index = Math.floor(Math.random() * list.length);
+  return list[index];
+}
+
+}
+
+module.exports = new Random();
